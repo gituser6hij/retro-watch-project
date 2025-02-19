@@ -38,10 +38,24 @@ export default function Home() {
     );
   }
 
+  const toggleFullScreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  };
+  
+
   return (
     <main className="container">
+      
       <div className="clock-container">
+      <button className="fullscreen-button" onClick={toggleFullScreen}>
+  {"\u26F6"}
+</button>
         <div className="clock">
+        
           <span className="digit">{formatNumber(time.getHours())}</span>
           <span className="blink">:</span>
           <span className="digit">{formatNumber(time.getMinutes())}</span>
@@ -63,6 +77,8 @@ export default function Home() {
         <div className="dot"></div>
       </div>
       <div className="message">Have a good day!</div>
+      
+
     </main>
   );
 }
