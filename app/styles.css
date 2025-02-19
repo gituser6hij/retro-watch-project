@@ -1,0 +1,43 @@
+/* Decorative Dots */
+.dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ffb74d;
+    border-radius: 50%;
+    opacity: 0;
+    animation: dot-fade 4.5s infinite ease-in-out;
+  }
+  
+  /* Stagger the animation for each dot */
+  .dot:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .dot:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  .dot:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+  
+  @keyframes dot-fade {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+  }
+  
