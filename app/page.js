@@ -62,6 +62,7 @@ export default function Home() {
         <div className="dot"></div>
         <div className="dot"></div>
       </div>
+      <div>Have a good day!</div>
     </main>
   );
 }
