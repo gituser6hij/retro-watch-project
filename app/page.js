@@ -6,6 +6,7 @@ import "./styles.css"; // Import the CSS file
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [time, setTime] = useState(new Date());
+  const [currentDesign, setCurrentDesign] = useState(1); // Start with first design
 
   useEffect(() => {
     setMounted(true);
@@ -45,17 +46,27 @@ export default function Home() {
       document.exitFullscreen();
     }
   };
-  
+
+  // Function to change design
+  const changeDesign = (newDesign) => {
+    setCurrentDesign(newDesign);
+  };
 
   return (
     <main className="container">
-      
-      <div className="clock-container">
-      <button className="fullscreen-button" onClick={toggleFullScreen}>
-  {"\u26F6"}
-</button>
-        <div className="clock">
+      <div className="button-container">
+          <button className="fullscreen-button" onClick={toggleFullScreen}>
+            {"\u26F6"}
+          </button>
+
+          <button className="fullscreen-button" onClick={() => changeDesign(2)}>{'\u{1F552}'}</button>
+          <button className="fullscreen-button" onClick={() => changeDesign(3)}>{'\u{1F552}'}</button>
+          <button className="fullscreen-button" onClick={() => changeDesign(1)}>{'\u{1F552}'}</button>
+
+        </div>
+      <div className={`clock-container design-${currentDesign}`}>
         
+        <div className="clock">
           <span className="digit">{formatNumber(time.getHours())}</span>
           <span className="blink">:</span>
           <span className="digit">{formatNumber(time.getMinutes())}</span>
@@ -71,14 +82,16 @@ export default function Home() {
           })}
         </div>
       </div>
-      <div className="dots">
-        <div className="dot"></div>
-        <div className="dot"></div>
-        <div className="dot"></div>
-      </div>
-      <div className="message">Have a good day!</div>
-      
-
+      {currentDesign === 1 && (
+      <>
+        <div className="dots">
+          <div className="dot"></div>
+          <div className="dot"></div>
+          <div className="dot"></div>
+        </div>
+        <div className="message">Have a good day!</div>
+      </>
+    )}
     </main>
   );
 }
