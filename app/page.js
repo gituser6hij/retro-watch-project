@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import "./styles.css"; // Import the CSS file
 
+<link rel="icon" href="/favicon.ico" sizes="any" />
+
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [time, setTime] = useState(new Date());
